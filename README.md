@@ -31,7 +31,7 @@ Press enter at the prompt to upload your existing `ssh` key or create a new one,
     
 You can run any Java application on Heroku that uses Maven as build tool. As an example, we will write a web app using Jetty. Here is a basic servlet class that also contains a main method to start up the application:
 
-### src/main/java/HelloWorld.java
+### src/main/java/ro.ieugen.bjug14.CamelStart.java
 
     :::java
     import java.io.IOException;
@@ -40,7 +40,7 @@ You can run any Java application on Heroku that uses Maven as build tool. As an 
     import org.eclipse.jetty.server.Server;
     import org.eclipse.jetty.servlet.*;
 
-    public class HelloWorld extends HttpServlet {
+    public class ro.ieugen.bjug14.CamelStart extends HttpServlet {
 
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -53,7 +53,7 @@ You can run any Java application on Heroku that uses Maven as build tool. As an 
             ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
             context.setContextPath("/");
             server.setHandler(context);
-            context.addServlet(new ServletHolder(new HelloWorld()),"/*");
+            context.addServlet(new ServletHolder(new ro.ieugen.bjug14.CamelStart()),"/*");
             server.start();
             server.join();   
         }
@@ -124,7 +124,7 @@ On Mac & Linux:
 
     :::term
     $ export PORT=5000
-    $ java -cp target/classes:"target/dependency/*" HelloWorld
+    $ java -cp target/classes:"target/dependency/*" ro.ieugen.bjug14.CamelStart
 
 (double quotes needed to prevent expansion of `*`)
 
@@ -132,7 +132,7 @@ On Windows:
 
     :::term
     $ set PORT=5000
-    $ java -cp target\classes;"target\dependency\*" HelloWorld
+    $ java -cp target\classes;"target\dependency\*" ro.ieugen.bjug14.CamelStart
 
 You should now see something similar to:
 
@@ -152,7 +152,7 @@ To run your web process on Heroku, you need to declare what command to use.  We'
 Here's what the `Procfile` looks like:
 
     :::term
-    web:    java -cp target/classes:target/dependency/* HelloWorld
+    web:    java -cp target/classes:target/dependency/* ro.ieugen.bjug14.CamelStart
 
 (note: no double quotes needed in Procfile)
 
@@ -168,7 +168,7 @@ You can specify 1.6, 1.7, or 1.8 (1.8 is in beta) for Java 6, 7, or 8 (with lamb
 
 ## Store your app in Git
 
-We now have the three major components of our app: build configuration and dependencies in `pom.xml`, process types in `Procfile`, and our application source in `src/main/java/HelloWorld.java`.  Let's put it into Git:
+We now have the three major components of our app: build configuration and dependencies in `pom.xml`, process types in `Procfile`, and our application source in `src/main/java/ro.ieugen.bjug14.CamelStart.java`.  Let's put it into Git:
 
     :::term
     $ git init
@@ -233,7 +233,7 @@ The web process is up.  Review the logs for more information:
     :::term
     $ heroku logs
     ...
-    2012-01-31T23:27:27+00:00 heroku[web.1]: Starting process with command `java -cp target/classes:target/dependency/* HelloWorld`
+    2012-01-31T23:27:27+00:00 heroku[web.1]: Starting process with command `java -cp target/classes:target/dependency/* ro.ieugen.bjug14.CamelStart`
     2012-01-31T23:27:28+00:00 app[web.1]: 2012-01-31 23:27:28.280:INFO:oejs.Server:jetty-7.6.0.v20120127
     2012-01-31T23:27:28+00:00 app[web.1]: 2012-01-31 23:27:28.334:INFO:oejsh.ContextHandler:started o.e.j.s.ServletContextHandler{/,null}
     2012-01-31T23:27:28+00:00 app[web.1]: 2012-01-31 23:27:28.373:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:8236
