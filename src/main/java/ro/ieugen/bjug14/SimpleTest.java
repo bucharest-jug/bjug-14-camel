@@ -7,9 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class RequestHandlingRoute extends RouteBuilder {
+public class SimpleTest extends RouteBuilder {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RequestHandlingRoute.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SimpleTest.class);
 
     @Override
     public void configure() throws Exception {

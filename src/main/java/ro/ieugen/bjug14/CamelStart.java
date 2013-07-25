@@ -21,7 +21,7 @@ public class CamelStart {
         Server server = new Server(Integer.valueOf(System.getenv("PORT")));
 
         CamelContext camelContext = new DefaultCamelContext();
-        camelContext.addRoutes(new RequestHandlingRoute());
+        camelContext.addRoutes(new SimpleTest());
         camelContext.start();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
